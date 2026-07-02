@@ -465,7 +465,8 @@ export default function ProjectView({ project }: { project: Project }) {
                 <div className="relative z-10">
                   <h2 className="text-sm font-mono uppercase tracking-widest text-white/50 mb-6">Live Command Center</h2>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-xl">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl">
+                    {/* Block 1: Projected MRR */}
                     <div>
                       <div className="text-3xl font-semibold mb-1">
                         {(() => {
@@ -473,14 +474,16 @@ export default function ProjectView({ project }: { project: Project }) {
                           if (!fa) return "N/A";
                           try {
                             const content = typeof fa.content === 'string' ? JSON.parse(fa.content) : fa.content;
-                            return content?.dashboardMetrics?.projectedMRR
-                              || content?.revenueProjections?.month6
-                              || "N/A";
-                          } catch (e) { return "N/A" }
+                            return content?.dashboardMetrics?.projectedMRR 
+                                || content?.revenueProjections?.month6 
+                                || "N/A";
+                          } catch(e) { return "N/A" }
                         })()}
                       </div>
                       <div className="text-xs text-white/50 uppercase tracking-widest">Projected MRR (M6)</div>
                     </div>
+                  
+                    {/* Block 2: Health Score */}
                     <div>
                       <div className="text-3xl font-semibold mb-1">
                         {(() => {
@@ -490,23 +493,36 @@ export default function ProjectView({ project }: { project: Project }) {
                               const content = typeof fa.content === 'string' ? JSON.parse(fa.content) : fa.content;
                               const score = content?.dashboardMetrics?.healthScore;
                               if (score !== undefined && score !== null) return score + "/100";
-                              // Derive a rough score from what we DO have
+                              
                               const hasProjections = !!content?.revenueProjections;
                               const hasPricing = Array.isArray(content?.pricingStrategy) && content.pricingStrategy.length > 0;
                               if (hasProjections && hasPricing) return "78/100";
                               if (hasProjections || hasPricing) return "62/100";
                               return "55/100";
-                            } catch (e) { }
+                            } catch(e) {}
                           }
                           return isBuilding ? "Calculating..." : "N/A";
                         })()}
                       </div>
                       <div className="text-xs text-white/50 uppercase tracking-widest">Startup Health Score</div>
                     </div>
-
+                    
+                    {/* Block 3: Target Addressable Market (TAM) */}
+                    <div>
+                      <div className="text-3xl font-semibold mb-1">
+                        {(() => {
+                          const ma = artifacts.find(a => a.artifact_type === 'market_analyst');
+                          if (!ma) return isBuilding ? "Scanning..." : "N/A";
+                          try {
+                            const content = typeof ma.content === 'string' ? JSON.parse(ma.content) : ma.content;
+                            return content?.marketSize?.tam || "N/A";
+                          } catch(e) { return "N/A" }
+                        })()}
+                      </div>
+                      <div className="text-xs text-white/50 uppercase tracking-widest">Total Market (TAM)</div>
+                    </div>
                   </div>
-                </div>
-
+                  
                 {/* Decorative background */}
                 <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
               </div>
