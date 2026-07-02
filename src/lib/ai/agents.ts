@@ -4,7 +4,9 @@
  * The Supervisor orchestrates them all.
  */
 
-export type AgentRole =
+// lib/ai/agents.ts
+
+export type AgentRole = 
   | "supervisor"
   | "market_analyst"
   | "product_strategist"
@@ -12,7 +14,9 @@ export type AgentRole =
   | "brand_designer"
   | "financial_analyst"
   | "launch_strategist"
-  | "website_builder";
+  | "website_builder"
+  | "customer_discovery" // <-- Add this
+  | "investor_radar";    // <-- Add this
 
 export interface AgentConfig {
   role: AgentRole;
