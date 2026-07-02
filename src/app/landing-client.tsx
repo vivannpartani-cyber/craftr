@@ -181,12 +181,16 @@ export default function LandingPageClient() {
             <div className="col-span-1 md:col-span-3 df-card p-6 bg-gradient-to-br from-gray-900 to-black text-white rounded-xl relative overflow-hidden">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
                 <div>
-                  <div className="text-3xl font-semibold mb-1">$12,450</div>
+                  <div className="text-3xl font-semibold mb-1">$4,600</div>
                   <div className="text-xs text-white/50 uppercase tracking-widest">Projected MRR (M6)</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-semibold mb-1">78/100</div>
+                  <div className="text-3xl font-semibold mb-1">85/100</div>
                   <div className="text-xs text-white/50 uppercase tracking-widest">Startup Health Score</div>
+                </div>
+                <div>
+                  <div className="text-sm font-medium mb-1 leading-relaxed">The total addressable market for student organization tools is approximately $1.5 billion in the US alone, with a global market potential of $5 billion.</div>
+                  <div className="text-xs text-white/50 uppercase tracking-widest">Total Market (TAM)</div>
                 </div>
               </div>
               <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
