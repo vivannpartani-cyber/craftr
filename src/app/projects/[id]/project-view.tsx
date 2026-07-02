@@ -509,7 +509,7 @@ export default function ProjectView({ project }: { project: Project }) {
 
                     {/* Block 3: Target Addressable Market (TAM) */}
                     <div>
-                      <div className="text-3xl font-semibold mb-1">
+                      <div className="text-sm font-medium mb-1 leading-relaxed">
                         {(() => {
                           const ma = artifacts.find(a => a.artifact_type === 'market_analyst');
                           if (!ma) return isBuilding ? "Scanning..." : "N/A";
