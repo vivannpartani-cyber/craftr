@@ -188,10 +188,6 @@ export default function LandingPageClient() {
                   <div className="text-3xl font-semibold mb-1">78/100</div>
                   <div className="text-xs text-white/50 uppercase tracking-widest">Startup Health Score</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-semibold mb-1 text-green-400">Funded via Revenue</div>
-                  <div className="text-xs text-white/50 uppercase tracking-widest">Runway Status</div>
-                </div>
               </div>
               <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
             </div>
