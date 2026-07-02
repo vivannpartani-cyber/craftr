@@ -482,7 +482,7 @@ export default function ProjectView({ project }: { project: Project }) {
                       </div>
                       <div className="text-xs text-white/50 uppercase tracking-widest">Projected MRR (M6)</div>
                     </div>
-                  
+
                     {/* Block 2: Health Score */}
                     <div>
                       <div className="text-3xl font-semibold mb-1">
@@ -506,7 +506,7 @@ export default function ProjectView({ project }: { project: Project }) {
                       </div>
                       <div className="text-xs text-white/50 uppercase tracking-widest">Startup Health Score</div>
                     </div>
-                    
+
                     {/* Block 3: Target Addressable Market (TAM) */}
                     <div>
                       <div className="text-3xl font-semibold mb-1">
@@ -522,13 +522,13 @@ export default function ProjectView({ project }: { project: Project }) {
                       <div className="text-xs text-white/50 uppercase tracking-widest">Total Market (TAM)</div>
                     </div>
                   </div>
-                  
+                </div>
+
                 {/* Decorative background */}
                 <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
                 {/* AI Co-Founder Suggestions */}
                 <div className="df-card p-6 flex flex-col h-full">
                   <div className="flex items-center gap-2 mb-4">
@@ -546,7 +546,7 @@ export default function ProjectView({ project }: { project: Project }) {
                     ].map((idea, i) => (
                       <div key={i} className="p-3 bg-primary/5 rounded-lg border border-primary/10">
                         <p className="text-xs font-medium text-foreground mb-2">{idea}</p>
-                        <button
+                        <button 
                           onClick={async () => {
                             if (confirm("Add this idea and rebuild?")) {
                               setIsBuilding(true);
@@ -587,11 +587,6 @@ export default function ProjectView({ project }: { project: Project }) {
                   </div>
                 </div>
 
-                {/* 
-                  ========================================
-                  UPDATED: MEMORY / KNOWLEDGE GRAPH SECTION
-                  ========================================
-                */}
                 <div className="df-card p-6">
                   <div className="flex flex-col gap-3 mb-4">
                     <div className="flex items-center gap-2 flex-wrap">
@@ -604,14 +599,14 @@ export default function ProjectView({ project }: { project: Project }) {
                       )}
                     </div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <button
+                      <button 
                         onClick={async () => {
                           setSendingEmail(true);
                           try {
                             await fetch('/api/cron/daily-briefing', {
-                              method: 'POST',
-                              headers: { 'Content-Type': 'application/json' }
-                            });
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' }
+                          });
                           } finally {
                             setSendingEmail(false);
                             alert("Email sent! Check your inbox.");
@@ -620,19 +615,19 @@ export default function ProjectView({ project }: { project: Project }) {
                         disabled={sendingEmail}
                         className="btn-link-muted text-xs flex items-center gap-1 border border-black/10 px-2 py-1 rounded-md whitespace-nowrap"
                       >
-                        {sendingEmail ? <Loader2 className="w-3 h-3 animate-spin" /> : <Mail className="w-3 h-3" />}
+                        {sendingEmail ? <Loader2 className="w-3 h-3 animate-spin" /> : <Mail className="w-3 h-3" />} 
                         Send Briefing
                       </button>
                       <button onClick={handleResearch} disabled={isResearching} className="btn-link-muted text-xs flex items-center gap-1 border border-black/10 px-2 py-1 rounded-md whitespace-nowrap">
-                        {isResearching ? <Loader2 className="w-3 h-3 animate-spin" /> : <Globe2 className="w-3 h-3" />}
+                        {isResearching ? <Loader2 className="w-3 h-3 animate-spin" /> : <Globe2 className="w-3 h-3" />} 
                         Run Web Research
                       </button>
                     </div>
                   </div>
-
+                  
                   {memories.length > 0 ? (
                     <div className="space-y-3">
-                      <div className="text-sm text-foreground font-medium flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> Context Established</div>
+                      <div className="text-sm text-foreground font-medium flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500"/> Context Established</div>
                       <p className="text-xs text-muted-foreground">The AI has accumulated {memories.length} historical facts and events about your startup to use in future decision-making.</p>
                     </div>
                   ) : (
