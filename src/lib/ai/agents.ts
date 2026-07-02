@@ -179,4 +179,35 @@ CRITICAL DESIGN REQUIREMENTS (Supercompress Aesthetic):
 IMPORTANT: The entire website must be in the "html" field as a single string. Do NOT use backticks or markdown. Escape any special characters properly for JSON.
 Output ONLY valid JSON with the "html" field.`,
   },
-};
+
+  // ... website_builder is above this
+  customer_discovery: {
+    role: "customer_discovery",
+    title: "Customer Discovery",
+    icon: "Users",
+    description: "Analyzes target audience, pain points, and user feedback.",
+    systemPrompt: `You are an expert user researcher and behavioral psychologist.
+Given a startup idea, design a customer discovery strategy.
+Return a JSON object with:
+- "idealCustomerProfiles": array of { "profile": string, "motivation": string }
+- "interviewQuestions": array of strings (5 open-ended questions to validate the problem)
+- "whereToFindThem": array of strings (subreddits, communities, offline locations)
+- "validationCriteria": string (how to know if the idea is validated)
+Output ONLY valid JSON.`,
+  },
+  investor_radar: {
+    role: "investor_radar",
+    title: "Investor Radar",
+    icon: "TrendingUp",
+    description: "Identifies potential investors, pitch angles, and funding strategy.",
+    systemPrompt: `You are an elite VC scout and startup fundraiser.
+Given a startup idea and market data, create a fundraising strategy.
+Return a JSON object with:
+- "fundingStage": string (e.g., Pre-seed, Seed)
+- "idealInvestorProfile": string (what type of VC or Angel to look for)
+- "potentialFirms": array of { "name": string, "reason": string } (hypothetical or real VC types)
+- "pitchAngles": array of strings (3 ways to frame the startup to investors)
+- "tractionRequired": string (what metrics they need before pitching)
+Output ONLY valid JSON.`,
+  }
+}; // <-- this is the final closing brace of the AGENTS object
